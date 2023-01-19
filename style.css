@@ -1,0 +1,90 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  :root {
+    --primario: #e1e4ed;
+    --secundario: #999999;
+    --tercero: #85a2f3f6;
+    --cuarto: #3b03ca;
+    --quinto: #26b13b;
+  }
+  body{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+  }
+  /* Inicio de header */
+  header{
+    width: 20%;
+    height: 100vh;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primario);
+    border: 1px var(--tercero) solid;
+  }
+  .container-btn{
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+  }
+  .container-btn button{
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    color: var(--cuarto);
+    box-shadow: 0 0 8px var(--secundario);
+  }
+  header .container-btn button:hover {
+    background-color: var(--tercero);
+  }
+
+  /* Inicio de main */
+  main{
+  width: 100%;
+  max-height: 100vh;
+  background-image: url(imagenes/pexels-tirachard-kumtanom-733857.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  color: var(--cuarto);
+ 
+  }
+  main h1{
+    text-align: center;
+    font-size: 40px;
+  }
+  /* sección lista de tareas */
+  main .task-list{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 70%;
+    height: 70%;
+    padding: 20px;
+    background-color: var(--primario);
+    border: none;
+    box-shadow: 0 0 8px var(--secundario);
+    border-radius: 15px;
+  }
+  main .task-list #list{
+   height: 100%;
+   width: 100%;
+  }
+  main .task-list .filter-container{
+    display: flex;
+    gap: 10px;
+  }
+ 
+
+ 
+
+ 

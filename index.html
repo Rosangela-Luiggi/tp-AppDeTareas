@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- estilos css -->
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      <div class="container-btn">
+        <button>Tareas</button>
+        <button>Crear Nueva Tarea</button>
+        <button>Editar/Eliminar</button>
+      </div>
+    </header>
+    <main>
+      <h1>Administacion de tareas</h1>
+      <section class="task-list">
+        <h2>Lista de tareas</h2>
+        <div id="list">
+
+        </div>
+      <div class="filter-container">
+        <p>Filtros</p>
+        <select id="select-status">
+          <option value="None">Seleccione un estado</option>
+          <option value="pending">Pendiente</option>
+          <option value="in-process">En progreso</option>
+          <option value="finished">Terminada</option>
+        </select>
+      </div>
+      </section>
+
+      <!-- <section id="create-tasks"></section>
+
+      <section id="edit-delete"></section> -->
+    </main>
+    <!-- para el javascript -->
+    <script src="main.js"></script>
+  </body>
+</html>
