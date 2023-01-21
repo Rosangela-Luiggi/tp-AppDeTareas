@@ -20,18 +20,30 @@
       <h1>Administacion de tareas</h1>
       <section class="task-list">
         <h2>Lista de tareas</h2>
-        <div id="list">
-
+        <div id="list"></div>
+        <div class="filter-container">
+          <p>Filtros</p>
+          <select id="select-status">
+            <option value="None">Seleccione un estado</option>
+            <option value="pending">Pendiente</option>
+            <option value="in-process">En progreso</option>
+            <option value="finished">Terminada</option>
+          </select>
         </div>
-      <div class="filter-container">
-        <p>Filtros</p>
-        <select id="select-status">
-          <option value="None">Seleccione un estado</option>
-          <option value="pending">Pendiente</option>
-          <option value="in-process">En progreso</option>
-          <option value="finished">Terminada</option>
-        </select>
-      </div>
+      </section>
+
+      <section class="container-modal">
+        <div class="modal">
+          <button id="close-modal">&times;</button>
+
+          <div class="task-pending">
+            <h3>Tareas Pendientes</h3>
+          </div>
+          <div class="task-in-process"></div>
+          <!-- <div class="task-finished">
+
+            </div> -->
+        </div>
       </section>
 
       <!-- <section id="create-tasks"></section>

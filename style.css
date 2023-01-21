@@ -15,6 +15,7 @@
     width: 100vw;
     height: 100vh;
     display: flex;
+    position: fixed;
   }
   /* Inicio de header */
   header{
@@ -27,12 +28,12 @@
     background-color: var(--primario);
     border: 1px var(--tercero) solid;
   }
-  .container-btn{
+  header .container-btn{
     display: flex;
     flex-direction: column;
     gap: 100px;
   }
-  .container-btn button{
+  header .container-btn button{
     padding: 10px;
     border-radius: 5px;
     border: none;
@@ -56,6 +57,7 @@
   justify-content: space-around;
   align-items: center;
   color: var(--cuarto);
+  position: relative;
  
   }
   main h1{
@@ -72,7 +74,7 @@
     padding: 20px;
     background-color: var(--primario);
     border: none;
-    box-shadow: 0 0 8px var(--secundario);
+    box-shadow: 0 0 6px var(--cuarto);
     border-radius: 15px;
   }
   main .task-list #list{
@@ -82,6 +84,41 @@
   main .task-list .filter-container{
     display: flex;
     gap: 10px;
+  }
+  /* Modal */
+ body .container-modal{
+    width: 100vw;
+    height: 100vh;
+    background-color: #0000008b;
+    top: 0;
+    right: 0;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+  } 
+
+  body .container-modal .modal{
+    height: 100vh;
+    width: 50%;
+    background-color: var(--primario);
+    border: none;
+    box-shadow: 0 0 8px var(--cuarto);
+    border-radius: 15px;
+    position: relative;
+    padding: 20px;
+    
+  }
+  #close-modal{
+    position: absolute;
+    font-size: 30px;
+    font-weight: bold;
+    right: 10px;
+    top: 5px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
   }
  
 
