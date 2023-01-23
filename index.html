@@ -6,29 +6,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- estilos css -->
     <link rel="stylesheet" href="style.css" />
-    <title>Document</title>
+    <!-- iconos -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>App de Tareas</title>
   </head>
   <body>
     <header>
       <div class="container-btn">
-        <button>Tareas</button>
-        <button>Crear Nueva Tarea</button>
-        <button>Editar/Eliminar</button>
+        <button id="btnMode"><i class="fa-solid fa-moon"></i></button>
+        <button type="button" id="btn-task"><i class="fa-solid fa-list"></i> Tareas</button>
+        <button type="button" id="btn-create"><i class="fa-regular fa-pen-to-square"></i> Crear Nueva Tarea</button>
+        <button type="button" id="btn-edit">Editar/Eliminar</button>
       </div>
     </header>
     <main>
-      <h1>Administacion de tareas</h1>
-      <section class="task-list">
-        <h2>Lista de tareas</h2>
-        <div id="list"></div>
-        <div class="filter-container">
-          <p>Filtros</p>
-          <select id="select-status">
-            <option value="None">Seleccione un estado</option>
-            <option value="pending">Pendiente</option>
-            <option value="in-process">En progreso</option>
-            <option value="finished">Terminada</option>
-          </select>
+      <h1 class="titulo">Administacion de tareas</h1>
+      <section id="task-list" class="section">
+        <div class="container-inf">
+          <h2>Lista de tareas</h2>
+          <div id="list"></div>
+          <div class="filter-container">
+            <p>Filtros</p>
+            <select id="select-status">
+              <option value="None">Seleccione un estado</option>
+              <option value="pending">Pendiente</option>
+              <option value="in-process">En progreso</option>
+              <option value="finished">Terminada</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <section class="section hidden" id="create-task">
+        <div class="container-inf">
+          <h2>Crear Nueva Tareas</h2>
+          <div id="inp-create">
+            <label for="task">Nueva Tarea</label>
+            <input id="task" type="text" />
+          </div>
+          <div class="new-task"></div>
+        </div>
+      </section>
+
+      <section class="section hidden" id="edit-task">
+        <div class="container-inf">
+          <h2>Editar Tareas</h2>
+          <div class="task"></div>
         </div>
       </section>
 
