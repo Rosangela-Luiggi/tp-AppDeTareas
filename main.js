@@ -51,62 +51,64 @@ window.addEventListener("load", function () {
   const divPending = $(".task-pending");
   const divProgress = $(".task-in-process");
   const divFinished = $(".task-finished");
+  const copiaDeTareas = [...tareas];
 
   /* Funciones */
   // lista de tareas existentes
-  const monstrarLista = () => {
+  const showList = () => {
     divListTask.innerHTML = "";
     tareas.forEach((elem) => {
-      divListTask.innerHTML += `
-            <ul>
-            <li><p>Tarea: ${elem.titulo}  Estado: ${elem.estado} </p></li>
-            </ul>
-        `;
+      divListTask.innerHTML += `<p>Tarea: ${elem.titulo}  Estado: ${elem.estado} </p>`;
     });
   };
-  monstrarLista();
+  showList();
 
   // lista de tareas para editar o eliminar
-  const editarLista = () => {
+  const editList = () => {
     divEdit.innerHTML = "";
     tareas.forEach((elem) => {
-      divEdit.innerHTML += `
-          <div><span>Tarea: ${elem.titulo}  Estado: ${elem.estado} </span><button><i class="fa-solid fa-pen"></i> Editar</button><button><i class="fa-solid fa-trash"></i> Eliminar</button></div>
+      divEdit.innerHTML += `<div><span>Tarea: ${elem.titulo}  Estado: ${elem.estado} </span><button><i class="fa-solid fa-pen"></i> Editar</button><button><i class="fa-solid fa-trash"></i> Eliminar</button></div>
       `;
     });
   };
 
-  editarLista();
+  editList();
+
   // funcion filtar
-  let mostrarListaTarea = (estado) => {
-    for (let tarea of tareas) {
+  let mostrarListaTarea = (estado, contenedor) => {
+    copiaDeTareas.forEach((tarea) => {
       if (tarea.estado === estado) {
-        return tareas.filter((tarea) => tarea.estado === estado);
-      }
-    }
-    return tareas;
+        copiaDeTareas.filter((tarea) => tarea.estado === estado);
+        return contenedor.innerHTML += `<p>Tarea: ${tarea.titulo}  Estado: ${tarea.estado} </p>`;
+      }  
+    });
+    
   };
 
   /* eventos */
   // vistas para el filtrado
+
 
   $btnPending.addEventListener("click", () => {
     divListTask.classList.add("hidden");
     divProgress.classList.add("hidden");
     divFinished.classList.add("hidden");
     divPending.classList.remove("hidden");
+    mostrarListaTarea("Pendiente", divPending);
   });
   $btnProgress.addEventListener("click", () => {
     divListTask.classList.add("hidden");
     divPending.classList.add("hidden");
     divFinished.classList.add("hidden");
     divProgress.classList.remove("hidden");
+    mostrarListaTarea("En progreso", divProgress);
   });
   $btnFinished.addEventListener("click", () => {
     divListTask.classList.add("hidden");
     divPending.classList.add("hidden");
     divProgress.classList.add("hidden");
     divFinished.classList.remove("hidden");
+    mostrarListaTarea("En progreso", divFinished);
   });
   $btnAll.addEventListener("click", () => {
     divPending.classList.add("hidden");
