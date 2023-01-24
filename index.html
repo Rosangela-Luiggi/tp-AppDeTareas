@@ -19,10 +19,16 @@
   <body>
     <header>
       <div class="container-btn">
-        <button class= "btn" type="button"id="btnMode"><i class="fa-solid fa-moon"></i></button>
-        <button class= "btn" type="button" id="btn-task"><i class="fa-solid fa-list"></i> Tareas</button>
-        <button class= "btn" type="button" id="btn-create"><i class="fa-regular fa-pen-to-square"></i> Crear Nueva Tarea</button>
-        <button class= "btn"type="button" id="btn-edit">Editar/Eliminar</button>
+        <button class="btn" type="button" id="btnMode">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <button class="btn" type="button" id="btn-task">
+          <i class="fa-solid fa-list"></i> Tareas
+        </button>
+        <button class="btn" type="button" id="btn-create">
+          <i class="fa-regular fa-pen-to-square"></i> Crear Nueva Tarea
+        </button>
+        <button class="btn" type="button" id="btn-edit">Editar/Eliminar</button>
       </div>
     </header>
     <main>
@@ -31,14 +37,25 @@
         <div class="container-inf">
           <h2>Lista de tareas</h2>
           <div id="list"></div>
-          <div class="filter-container">
+
+          <div class="task-pending hidden">
+            <h4>Tareas Pendientes</h4>
+          </div>
+
+          <div class="task-in-process hidden">
+            <h4>Tareas En Proceso</h4>
+          </div>
+
+          <div class="task-finished hidden">
+            <h4>Tareas Terminadas</h4>
+          </div>
+
+          <div class="filter-btn">
             <p>Filtros</p>
-            <select class="select" id="select-status">
-              <option value="None">Seleccione un estado</option>
-              <option value="pending">Pendiente</option>
-              <option value="in-process">En progreso</option>
-              <option value="finished">Terminada</option>
-            </select>
+            <button class="btn" id="btn-pending">Pendientes</button>
+            <button class="btn" id="btn-in-progress">En progreso</button>
+            <button class="btn" id="btn-finished">Terminadas</button>
+            <button class="btn" id="btn-all">Todas</button>
           </div>
         </div>
       </section>
@@ -52,13 +69,13 @@
           </div>
           <div>
             <select class="select" id="select-create">
-            <option value="None">Seleccione un estado</option>
-            <option value="pending">Pendiente</option>
-            <option value="in-process">En progreso</option>
-            <option value="finished">Terminada</option>
-          </select>
-        </div>
-          <button class= "btn" type="submit">Crear</button>
+              <option value="None">Seleccione un estado</option>
+              <option value="pending">Pendiente</option>
+              <option value="in-progress">En progreso</option>
+              <option value="finished">Terminada</option>
+            </select>
+          </div>
+          <button class="btn" type="submit">Crear</button>
           <div class="new-task"></div>
         </div>
       </section>
@@ -74,10 +91,10 @@
         <div class="modal">
           <button id="close-modal">&times;</button>
 
-          <div class="task-pending">
+          <!-- <div class="task-pending">
             <h3>Tareas Pendientes</h3>
-          </div>
-          <div class="task-in-process"></div>
+          </div> -->
+          <!-- <div class="task-in-process"></div> -->
           <!-- <div class="task-finished">
 
             </div> -->

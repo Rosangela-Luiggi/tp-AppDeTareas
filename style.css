@@ -81,9 +81,12 @@ main .section .container-inf {
   flex-direction: column;
   align-items: center;
   /* justify-content: center; */
- /*  padding-left: 65px; */
+  /*  padding-left: 65px; */
 }
-main .section #list {
+main .section #list, 
+ .task-pending, 
+ .task-in-process, 
+ .task-finished{
   height: 100%;
   width: 100%;
 }
@@ -105,9 +108,8 @@ main .section #inp-create {
   border: none;
   outline: none;
   font-size: 15px;
-
 }
-.select{
+.select {
   width: 100%;
   height: 35px;
   margin: 20px;
@@ -156,28 +158,22 @@ body .container-modal .modal {
   color: #ffffff;
 }
 
-
 .dark-mode main {
   background-color: #313131;
   background-image: none;
 }
-
 
 .dark-mode header {
   background-color: #000000eb;
   color: #ffffff;
 }
 .dark-mode header button {
-background-color: rgb(54, 53, 53);
-color: #ffffff;
+  background-color: rgb(54, 53, 53);
+  color: #ffffff;
 }
 
-
-
-.dark-mode main .section{
+.dark-mode main .section {
   background-color: #000000eb;
   color: white;
   box-shadow: 0 0 6px var(--cuarto);
-  
 }
-
