@@ -19,10 +19,10 @@
   <body>
     <header>
       <div class="container-btn">
-        <button id="btnMode"><i class="fa-solid fa-moon"></i></button>
-        <button type="button" id="btn-task"><i class="fa-solid fa-list"></i> Tareas</button>
-        <button type="button" id="btn-create"><i class="fa-regular fa-pen-to-square"></i> Crear Nueva Tarea</button>
-        <button type="button" id="btn-edit">Editar/Eliminar</button>
+        <button class= "btn" type="button"id="btnMode"><i class="fa-solid fa-moon"></i></button>
+        <button class= "btn" type="button" id="btn-task"><i class="fa-solid fa-list"></i> Tareas</button>
+        <button class= "btn" type="button" id="btn-create"><i class="fa-regular fa-pen-to-square"></i> Crear Nueva Tarea</button>
+        <button class= "btn"type="button" id="btn-edit">Editar/Eliminar</button>
       </div>
     </header>
     <main>
@@ -33,7 +33,7 @@
           <div id="list"></div>
           <div class="filter-container">
             <p>Filtros</p>
-            <select id="select-status">
+            <select class="select" id="select-status">
               <option value="None">Seleccione un estado</option>
               <option value="pending">Pendiente</option>
               <option value="in-process">En progreso</option>
@@ -50,6 +50,15 @@
             <label for="task">Nueva Tarea</label>
             <input id="task" type="text" />
           </div>
+          <div>
+            <select class="select" id="select-create">
+            <option value="None">Seleccione un estado</option>
+            <option value="pending">Pendiente</option>
+            <option value="in-process">En progreso</option>
+            <option value="finished">Terminada</option>
+          </select>
+        </div>
+          <button class= "btn" type="submit">Crear</button>
           <div class="new-task"></div>
         </div>
       </section>
@@ -57,11 +66,11 @@
       <section class="section hidden" id="edit-task">
         <div class="container-inf">
           <h2>Editar Tareas</h2>
-          <div class="task"></div>
+          <div id="edit-deleted" class="task"></div>
         </div>
       </section>
 
-      <section class="container-modal">
+      <section class="container-modal hidden">
         <div class="modal">
           <button id="close-modal">&times;</button>
 

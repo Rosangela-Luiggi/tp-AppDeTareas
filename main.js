@@ -21,8 +21,11 @@ let tareas = [
   ]
 
 window.addEventListener("load", function () {
+
+  /* variables */
   /* Modal */
   const xCloseModal = $("#close-modal");
+  const containerModal = $("#container-modal");
 
   /* vistas */
   const $containerTask = $("#task-list");
@@ -38,9 +41,47 @@ window.addEventListener("load", function () {
   const $btnDarkMode = $("#btnMode");
   let body = document.body;
 
+  /* vistas de tareas */
+  const $divListTask = $("#list");
+  const $divEdit = $("#edit-deleted");
+
+
   /* Funciones */
+  const monstrarLista = () => {
+    $divListTask.innerHTML = ""
+    tareas.forEach(elem => {
+      $divListTask.innerHTML += `
+            <ul>
+            <li><p>Tarea: ${elem.titulo}  Estado: ${elem.estado} </p></li>
+            </ul>
+        `
+    });
+}
+
+monstrarLista();
+
+const editarLista = () => {
+  $divEdit .innerHTML = ""
+  tareas.forEach(elem => {
+    $divEdit .innerHTML += `
+          
+          <div><span>Tarea: ${elem.titulo}  Estado: ${elem.estado} </span><button><i class="fa-solid fa-pen"></i> Editar</button><button><i class="fa-solid fa-trash"></i> Eliminar</button></div>
+          
+      `
+  });
+}
+
+editarLista();
+
+
+
 
   /* eventos */
+
+ //Modal
+ xCloseModal.addEventListener("click", () =>{
+  containerModal.classList.remove("hidden");
+ });
   //Cambiar sección
   $btnTask.addEventListener("click", () => {
     $containerCreate.classList.add("hidden");
@@ -71,4 +112,7 @@ window.addEventListener("load", function () {
       $btnDarkMode.innerHTML = '<i class="fa-solid fa-moon"></i>';
     }
   });
+
+
+
 });

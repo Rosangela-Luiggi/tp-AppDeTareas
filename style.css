@@ -33,7 +33,7 @@ header .container-btn {
   flex-direction: column;
   gap: 100px;
 }
-header .container-btn button {
+.btn {
   padding: 10px;
   border-radius: 5px;
   border: none;
@@ -80,6 +80,8 @@ main .section .container-inf {
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* justify-content: center; */
+ /*  padding-left: 65px; */
 }
 main .section #list {
   height: 100%;
@@ -91,14 +93,24 @@ main .section .filter-container {
 }
 /* sección nueva tarea */
 main .section #inp-create {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  margin: 80px;
+  margin-top: 65px;
 }
 .section #inp-create input {
-  width: 700px;
+  width: 90%;
   height: 40px;
   margin-top: 10px;
+  border: none;
+  outline: none;
+  font-size: 15px;
+
+}
+.select{
+  width: 100%;
+  height: 35px;
+  margin: 20px;
   border: none;
   outline: none;
   font-size: 15px;
@@ -111,10 +123,7 @@ body .container-modal {
   top: 0;
   right: 0;
   position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  display: none;
+  /* display: none; */
 }
 
 body .container-modal .modal {
