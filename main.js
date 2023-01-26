@@ -79,15 +79,13 @@ window.addEventListener("load", function () {
     copiaDeTareas.forEach((tarea) => {
       if (tarea.estado === estado) {
         copiaDeTareas.filter((tarea) => tarea.estado === estado);
-        return contenedor.innerHTML += `<p>Tarea: ${tarea.titulo}  Estado: ${tarea.estado} </p>`;
-      }  
+        return (contenedor.innerHTML += `<p>Tarea: ${tarea.titulo}  Estado: ${tarea.estado} </p>`);
+      }
     });
-    
   };
 
   /* eventos */
   // vistas para el filtrado
-
 
   $btnPending.addEventListener("click", () => {
     divListTask.classList.add("hidden");
@@ -118,9 +116,9 @@ window.addEventListener("load", function () {
   });
 
   //Modal
-  xCloseModal.addEventListener("click", () => {
+  /*  xCloseModal.addEventListener("click", () => {
     containerModal.classList.remove("hidden");
-  });
+  }); */
   //Cambiar sección
   $btnTask.addEventListener("click", () => {
     containerCreate.classList.add("hidden");

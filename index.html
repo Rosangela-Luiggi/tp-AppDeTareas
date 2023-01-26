@@ -18,6 +18,7 @@
   </head>
   <body>
     <header>
+      <!-- botones principales -->
       <div class="container-btn">
         <button class="btn" type="button" id="btnMode">
           <i class="fa-solid fa-moon"></i>
@@ -32,34 +33,42 @@
       </div>
     </header>
     <main>
+      <!-- pantalla inicial -->
       <h1 class="titulo">App de Tareas</h1>
       <section id="task-list" class="section">
+        <!-- vista de toda la lista -->
         <div class="container-inf">
           <h2>Lista de tareas</h2>
           <div id="list"></div>
-
+          <!-- vista de tareas pendientes -->
           <div class="task-pending hidden">
             <h4>Tareas Pendientes</h4>
           </div>
-
+          <!-- vista de tareas en proceso -->
           <div class="task-in-process hidden">
             <h4>Tareas En Proceso</h4>
           </div>
-
+          <!-- vista de tareas terminadas -->
           <div class="task-finished hidden">
             <h4>Tareas Terminadas</h4>
           </div>
-
+          <!-- botones de filtrado -->
           <div class="filter-btn">
             <p>Filtros</p>
-            <button type="button" class="btn" id="btn-pending">Pendientes</button>
-            <button type="button" class="btn" id="btn-in-progress">En progreso</button>
-            <button type="button" class="btn" id="btn-finished">Terminadas</button>
+            <button type="button" class="btn" id="btn-pending">
+              Pendientes
+            </button>
+            <button type="button" class="btn" id="btn-in-progress">
+              En progreso
+            </button>
+            <button type="button" class="btn" id="btn-finished">
+              Terminadas
+            </button>
             <button type="button" class="btn" id="btn-all">Todas</button>
           </div>
         </div>
       </section>
-
+      <!-- seccion para crear tareas -->
       <section class="section hidden" id="create-task">
         <div class="container-inf">
           <h2>Crear Nueva Tareas</h2>
@@ -78,19 +87,18 @@
           </div>
           <button class="btn" type="submit">Crear</button>
           <div class="new-task"></div>
-        <!-- </form> -->
+          <!-- </form> -->
         </div>
+        <!-- seccion para editar y eliminar tareas -->
       </section>
 
       <section class="section hidden" id="edit-task">
         <div class="container-inf">
           <h2>Editar Tareas</h2>
-          <div id="edit-deleted" class="task">
-            
-          </div>
+          <div id="edit-deleted" class="task"></div>
         </div>
       </section>
-
+      <!-- aca quiero editar las tareas, aun no esta definido -->
       <section class="container-modal hidden">
         <div class="modal">
           <button id="close-modal">&times;</button>
@@ -98,7 +106,6 @@
           <!-- <div class="edit-container">
             
           </div> -->
-          
         </div>
       </section>
     </main>
