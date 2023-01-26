@@ -32,7 +32,7 @@
       </div>
     </header>
     <main>
-      <h1 class="titulo">Administacion de tareas</h1>
+      <h1 class="titulo">App de Tareas</h1>
       <section id="task-list" class="section">
         <div class="container-inf">
           <h2>Lista de tareas</h2>
@@ -52,10 +52,10 @@
 
           <div class="filter-btn">
             <p>Filtros</p>
-            <button class="btn" id="btn-pending">Pendientes</button>
-            <button class="btn" id="btn-in-progress">En progreso</button>
-            <button class="btn" id="btn-finished">Terminadas</button>
-            <button class="btn" id="btn-all">Todas</button>
+            <button type="button" class="btn" id="btn-pending">Pendientes</button>
+            <button type="button" class="btn" id="btn-in-progress">En progreso</button>
+            <button type="button" class="btn" id="btn-finished">Terminadas</button>
+            <button type="button" class="btn" id="btn-all">Todas</button>
           </div>
         </div>
       </section>
@@ -63,6 +63,7 @@
       <section class="section hidden" id="create-task">
         <div class="container-inf">
           <h2>Crear Nueva Tareas</h2>
+          <!-- <form class="form-create"> -->
           <div id="inp-create">
             <label for="task">Nueva Tarea</label>
             <input id="task" type="text" />
@@ -77,13 +78,16 @@
           </div>
           <button class="btn" type="submit">Crear</button>
           <div class="new-task"></div>
+        <!-- </form> -->
         </div>
       </section>
 
       <section class="section hidden" id="edit-task">
         <div class="container-inf">
           <h2>Editar Tareas</h2>
-          <div id="edit-deleted" class="task"></div>
+          <div id="edit-deleted" class="task">
+            
+          </div>
         </div>
       </section>
 

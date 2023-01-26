@@ -80,17 +80,16 @@ main .section .container-inf {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: center; */
-  /*  padding-left: 65px; */
+  padding: 20px;
 }
-main .section #list, 
- .task-pending, 
- .task-in-process, 
- .task-finished{
+main .section #list,
+.task-pending,
+.task-in-process,
+.task-finished {
   height: 100%;
   width: 100%;
 }
-main .section .filter-container {
+main .section .filter-btn {
   display: flex;
   gap: 10px;
 }

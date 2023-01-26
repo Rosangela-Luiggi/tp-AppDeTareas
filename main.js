@@ -71,11 +71,11 @@ window.addEventListener("load", function () {
       `;
     });
   };
-
   editList();
 
   // funcion filtar
   let mostrarListaTarea = (estado, contenedor) => {
+    contenedor.innerHTML = "";
     copiaDeTareas.forEach((tarea) => {
       if (tarea.estado === estado) {
         copiaDeTareas.filter((tarea) => tarea.estado === estado);
@@ -108,7 +108,7 @@ window.addEventListener("load", function () {
     divPending.classList.add("hidden");
     divProgress.classList.add("hidden");
     divFinished.classList.remove("hidden");
-    mostrarListaTarea("En progreso", divFinished);
+    mostrarListaTarea("Terminado", divFinished);
   });
   $btnAll.addEventListener("click", () => {
     divPending.classList.add("hidden");
