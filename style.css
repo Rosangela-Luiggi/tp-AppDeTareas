@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Acme', sans-serif;
+  font-family: "Acme", sans-serif;
 }
 
 :root {
@@ -17,7 +17,6 @@ body {
   height: 100vh;
   display: flex;
   position: fixed;
- 
 }
 /* Inicio de header */
 header {
@@ -29,7 +28,6 @@ header {
   align-items: center;
   background-color: var(--primario);
   border: 1px var(--tercero) solid;
-  
 }
 header .container-btn {
   display: flex;
@@ -86,29 +84,27 @@ main .section .container-inf {
   padding: 20px;
 }
 /* formulario */
-main .section .container-inf .form-create{
-width: 100%;
+main .section .container-inf .form-create {
+  width: 100%;
 }
-.form-create .container-inp{
+.form-create .container-inp {
   position: relative;
 }
-.form-create .container-inp #task{
+.form-create .container-inp #task {
   width: 100%;
-	border: 3px solid transparent;
-	border-radius: 3px;
-	height: 45px;
-	line-height: 45px;
-	padding: 0 40px 0 10px;
+  border: 3px solid transparent;
+  border-radius: 3px;
+  height: 45px;
+  line-height: 45px;
+  padding: 0 40px 0 10px;
 }
-.form-create .container-inp .validation{
+.form-create .container-inp .validation {
   position: absolute;
-	right: 10px;
-	bottom: 15px;
-	z-index: 100;
-	font-size: 16px;
+  right: 10px;
+  bottom: 15px;
+  z-index: 100;
+  font-size: 16px;
 }
-
-
 
 main .section #list,
 .task-pending,
@@ -194,7 +190,6 @@ body .container-modal .modal {
   background-color: #000000eb;
   color: #ffffff;
   border: none;
-  
 }
 .dark-mode header button {
   background-color: rgb(54, 53, 53);
@@ -209,20 +204,20 @@ body .container-modal .modal {
 }
 
 /* validadción formulario */
-.error{
+.error {
   font-size: small;
   color: #ff0000;
   font-style: italic;
 }
-.valid{
+.valid {
   font-size: small;
   color: #07de4f;
   font-style: italic;
 }
-.incorrect{
+.incorrect {
   color: #ff0000;
   opacity: 1;
 }
-.right{
+.right {
   opacity: 0;
 }

@@ -53,6 +53,20 @@ window.addEventListener("load", function () {
   const divFinished = $(".task-finished");
   const copiaDeTareas = [...tareas];
 
+  //formulario
+  const $form = $(".form-create");
+  const $errorForm = $("#messageError");
+  // input y error titulo
+  const $inputTask = $("#task");
+  const $errorTask = $("#taskError");
+  const $icon = $(".validation");
+  // select y error estado
+  const $selectCreate = $("#select-create");
+  const $errorstate = $("#selectError");
+  // validación
+  const regEx = /^[a-zA-Z0-9-\sñáéíóúüª!:?'¡].{5,20}$/;
+  let validar = false;
+
   /* Funciones */
   // lista de tareas existentes
   const showList = () => {
@@ -83,78 +97,6 @@ window.addEventListener("load", function () {
       }
     });
   };
- //funcion para ordenar tareas
- /*  let estados = ["Pendiente", "En progreso", "Terminado"];
-
-let tareasOrdenadas =()=>{
-    let listaTarea = [];
-
-    for(let e = 0; e < estados.length; e++){
-        for(let i = 0; i<tareas.length; i++){
-            if(tareas[i].estado === estados[e]){
-             listaTarea.push(tareas[i]);
-         }
-    }
-    }
-return listaTarea;
-
-} */
-
-  // funcion agregar tarea
-  //formulario
-const $from = $(".form-create");
-const $errorFrom =$("#messageError");
-// input y error titulo
-const $inputTask = $("#task");
-const $errorTask = $("#taskError");
-const $icon = $(".validation");
-// select y error estado
-const $selectCreate = $("#select-create");
-const $errorstate = $("#selectError");
-// validación
-const regEx = /^[a-zA-Z0-9-\sñáéíóúüª!:?'¡].{5,20}$/;
-let validar = false;
-
-$inputTask.addEventListener("blur", (e)=>{
-if(!$inputTask.value.trim()){
-  $errorTask.innerText = "Este campo esta vacio";
-  $icon.classList.remove("right");
-  $icon.classList.add("incorrect");
-  validar = true;
-}else if(!regEx.test($inputTask.value)){
-  $errorTask.innerText = "Titulo incorrecto, faltan caracteres";
-  $icon.classList.remove("right");
-  $icon.classList.add("incorrect");
-  validar = true;
-}else{
-  $errorTask.innerText = "Titulo valido";
-  validar = false;
-  $errorTask.classList.remove("error");
-  $errorTask.classList.add("valid");
-  $icon.classList.add("right");
-}
-
-});
-
-//evento de formulario
-
-$from.addEventListener("submit", (e)=>{
-  e.preventDefault();
-  let error = false;
-  let allElementsFrom = $from.elements
- for(let i = 1; i > allElementsFrom.length - 1; i++){
-  if (allElementsFrom.value === ""){
-    $errorFrom.innerText = "Todos los campos son OBLIGATORIOS"
-     error = true;
-  }
-  else{
-    $errorFrom.innerText = ""
-  }
- }
-});
-
-
-
 
   /* eventos */
   // vistas para el filtrado
@@ -217,6 +159,73 @@ $from.addEventListener("submit", (e)=>{
       $btnDarkMode.innerHTML = '<i class="fa-regular fa-sun"></i>';
     } else {
       $btnDarkMode.innerHTML = '<i class="fa-solid fa-moon"></i>';
+    }
+  });
+
+  //formulario-crear-tarea
+  //input para agregar tarea
+  $inputTask.addEventListener("blur", (e) => {
+    if (!$inputTask.value.trim()) {
+      $errorTask.innerText = "Este campo esta vacio";
+      $errorTask.classList.remove("valid");
+      $errorTask.classList.add("error");
+      $icon.classList.remove("right");
+      $icon.classList.add("incorrect");
+      validar = true;
+    } else if (!regEx.test($inputTask.value)) {
+      $errorTask.innerText = "Titulo incorrecto, faltan caracteres";
+      $icon.classList.remove("right");
+      $icon.classList.add("incorrect");
+      validar = true;
+    } else {
+      $errorTask.innerText = "Titulo valido";
+      validar = false;
+      $errorTask.classList.remove("error");
+      $errorTask.classList.add("valid");
+      $icon.classList.add("right");
+    }
+  });
+
+  //Select para escoger estado
+  $selectCreate.addEventListener("blur", (e) => {
+    if (!$selectCreate.value.trim()) {
+      $errorstate.innerText = "Este campo esta vacio";
+      validar = true;
+    } else {
+      $errorstate.innerText = "Titulo valido";
+      $errorstate.classList.remove("error");
+      $errorstate.classList.add("valid");
+      validar = false;
+    }
+  });
+
+  //evento de formulario
+
+  $form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    let errorSend = false;
+    let allElementsForm = $form.elements;
+    for (let i = 0; i < allElementsForm.length - 1; i++) {
+      if (allElementsForm[i].value === "") {
+        allElementsForm[i].style.backgroundColor = "#f9d8d8";
+        allElementsForm[i].style.border = "1.5px solid #ff0000";
+        $errorForm.innerText = "Todos los campos son OBLIGATORIOS";
+        errorSend = true;
+      } else {
+        allElementsForm[i].style.backgroundColor = "none";
+        allElementsForm[i].style.border = "none";
+        errorSend = false;
+      }
+    }
+    if (!errorSend && !validar) {
+      tareas.push({titulo: $inputTask.value, estado: $selectCreate.value});
+      console.log($inputTask.value)
+      showList();
+      editList();
+      /* mostrarListaTarea("Pendiente", divPending);
+      mostrarListaTarea("En progreso", divProgress);
+      mostrarListaTarea("Terminado", divFinished); */
     }
   });
 });
