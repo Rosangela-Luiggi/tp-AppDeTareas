@@ -14,7 +14,14 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <title>App de Tareas</title>
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Acme&display=swap"
+      rel="stylesheet"
+    />
+    <title>App de Tareas </title>
   </head>
   <body>
     <header>
@@ -72,22 +79,29 @@
       <section class="section hidden" id="create-task">
         <div class="container-inf">
           <h2>Crear Nueva Tareas</h2>
-          <!-- <form class="form-create"> -->
-          <div id="inp-create">
-            <label for="task">Nueva Tarea</label>
-            <input id="task" type="text" />
-          </div>
-          <div>
-            <select class="select" id="select-create">
-              <option value="None">Seleccione un estado</option>
-              <option value="pending">Pendiente</option>
-              <option value="in-progress">En progreso</option>
-              <option value="finished">Terminada</option>
-            </select>
-          </div>
-          <button class="btn" type="submit">Crear</button>
-          <div class="new-task"></div>
-          <!-- </form> -->
+          <form class="form-create">
+            <div id="inp-create">
+              <label for="task">Nueva Tarea</label>
+              <div class="container-inp">
+                <input id="task" type="text" name="task" placeholder="Titulo de tarea" />
+                <i class="fa-regular fa-circle-xmark validation right"></i>
+              </div>
+              <span id="taskError" class="error"></span>
+            </div>
+            <div>
+              <select class="select" id="select-create">
+                <option value=""  disabled selected>Seleccione un estado</option>
+                <option value="pending">Pendiente</option>
+                <option value="in-progress">En progreso</option>
+                <option value="finished">Terminada</option>
+              </select>
+              <span id="selectError" class="error"></span>
+            </div>
+            
+            <button class="btnFrom" type="submit">Crear</button>
+            <div class="new-task"></div>
+          </form>
+          <span id="messageError" class="error"></span>
         </div>
         <!-- seccion para editar y eliminar tareas -->
       </section>

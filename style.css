@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Acme', sans-serif;
 }
 
 :root {
@@ -16,6 +17,7 @@ body {
   height: 100vh;
   display: flex;
   position: fixed;
+ 
 }
 /* Inicio de header */
 header {
@@ -27,6 +29,7 @@ header {
   align-items: center;
   background-color: var(--primario);
   border: 1px var(--tercero) solid;
+  
 }
 header .container-btn {
   display: flex;
@@ -82,6 +85,31 @@ main .section .container-inf {
   align-items: center;
   padding: 20px;
 }
+/* formulario */
+main .section .container-inf .form-create{
+width: 100%;
+}
+.form-create .container-inp{
+  position: relative;
+}
+.form-create .container-inp #task{
+  width: 100%;
+	border: 3px solid transparent;
+	border-radius: 3px;
+	height: 45px;
+	line-height: 45px;
+	padding: 0 40px 0 10px;
+}
+.form-create .container-inp .validation{
+  position: absolute;
+	right: 10px;
+	bottom: 15px;
+	z-index: 100;
+	font-size: 16px;
+}
+
+
+
 main .section #list,
 .task-pending,
 .task-in-process,
@@ -165,14 +193,36 @@ body .container-modal .modal {
 .dark-mode header {
   background-color: #000000eb;
   color: #ffffff;
+  border: none;
+  
 }
 .dark-mode header button {
   background-color: rgb(54, 53, 53);
   color: #ffffff;
+  box-shadow: 0 0 10px var(--cuarto);
 }
 
 .dark-mode main .section {
   background-color: #000000eb;
   color: white;
   box-shadow: 0 0 6px var(--cuarto);
+}
+
+/* validadción formulario */
+.error{
+  font-size: small;
+  color: #ff0000;
+  font-style: italic;
+}
+.valid{
+  font-size: small;
+  color: #07de4f;
+  font-style: italic;
+}
+.incorrect{
+  color: #ff0000;
+  opacity: 1;
+}
+.right{
+  opacity: 0;
 }
