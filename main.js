@@ -19,6 +19,7 @@ let tareas = [
   },
 ];
 
+
 window.addEventListener("load", function () {
   /* variables */
   /* Modal */
@@ -67,6 +68,9 @@ window.addEventListener("load", function () {
   const regEx = /^[a-zA-Z0-9-\sñáéíóúüª!:?'¡].{5,20}$/;
   let validar = false;
 
+  // contenedor de tarea existe
+  const containerError = $(".new-task");
+
   /* Funciones */
   // lista de tareas existentes
   const showList = () => {
@@ -97,6 +101,19 @@ window.addEventListener("load", function () {
       }
     });
   };
+
+  let agregarVerificacion =(tituloTarea, estadoTarea )=>{
+    for(let tarea of tareas){
+        if(tarea.titulo.toLocaleLowerCase()  === tituloTarea.toLocaleLowerCase() ){
+            let tareaElegida = tarea.titulo.toLocaleLowerCase() ;
+            return ( containerError.innerHTML +=`<p>Tarea: ${tareaElegida }  ya existe`);
+        }else{
+          tareas.push({titulo: tituloTarea, estado: estadoTarea });
+          return showList();
+        }
+    }
+    
+    }
 
   /* eventos */
   // vistas para el filtrado
@@ -187,7 +204,7 @@ window.addEventListener("load", function () {
   });
 
   //Select para escoger estado
-  $selectCreate.addEventListener("blur", (e) => {
+  $selectCreate.addEventListener("change", (e) => {
     if (!$selectCreate.value.trim()) {
       $errorstate.innerText = "Este campo esta vacio";
       validar = true;
@@ -219,13 +236,13 @@ window.addEventListener("load", function () {
       }
     }
     if (!errorSend && !validar) {
-      tareas.push({titulo: $inputTask.value, estado: $selectCreate.value});
-      console.log($inputTask.value)
-      showList();
+      agregarVerificacion($inputTask.value, $selectCreate.value)
       editList();
-      /* mostrarListaTarea("Pendiente", divPending);
-      mostrarListaTarea("En progreso", divProgress);
-      mostrarListaTarea("Terminado", divFinished); */
+      $selectCreate.value = "";
+      $inputTask.value = "";
+      $errorstate.innerText = "";
+      $errorTask.innerText = "";
+
     }
   });
 });
