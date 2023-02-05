@@ -57,7 +57,7 @@ window.addEventListener("load", function () {
   const divPending = $(".task-pending");
   const divProgress = $(".task-in-process");
   const divFinished = $(".task-finished");
-  const copiaDeTareas = [...tareas];
+ /*  const copiaDeTareas = [...tareas]; */
 
   //formulario
   const $form = $(".form-create");
@@ -97,15 +97,16 @@ window.addEventListener("load", function () {
       <button class="btn-delete"  id=${elem.id} ><i class="fa-solid fa-trash" ></i> Eliminar</button></div>
       `;
     });
+   
   };
   editList(divEdit, tareas);
 
   // funcion filtar
   let mostrarListaTarea = (estado, contenedor) => {
     contenedor.innerHTML = "";
-    copiaDeTareas.forEach((tarea) => {
+    tareas.forEach((tarea) => {
       if (tarea.estado === estado) {
-        copiaDeTareas.filter((tarea) => tarea.estado === estado);
+        tareas.filter((tarea) => tarea.estado === estado);
         return (contenedor.innerHTML += `<p>Tarea: ${tarea.titulo}  Estado: ${tarea.estado} </p>`);
       }
     });
@@ -131,6 +132,9 @@ window.addEventListener("load", function () {
    return showList();
  }
 
+/*  let bleach = (container) =>{
+container.innerHTML ="";
+ } */
   /* eventos */
 
   // vistas para el filtrado
@@ -266,17 +270,17 @@ window.addEventListener("load", function () {
   });
 
   //eliminar
-/*   let deleteTask = (id) => {
+  let deleteTask = (id) => {
     tareas = tareas.filter((tarea) => tarea.id !== Number(id));
     editList(divEdit, tareas);
   };
   $btnDelete = document.querySelectorAll(".btn-delete");
   $btnDelete.forEach((btn) => {
     btn.addEventListener("click", (e) => {
-      containerModal.classList.remove("hidden"); */
-      /*  tareas = tareas.filter((tarea) => tarea.id !== Number(e.target.id));
-      editList(divEdit, tareas); */
-    /* });
+      containerModal.classList.remove("hidden"); 
+      /* tareas = tareas.filter((tarea) => tarea.id !== Number(e.target.id));
+      editList(divEdit, tareas);  */
+    });
   });
   const buttonYes = $("#btn-yes");
   const buttonNot = $("#btn-not");
@@ -287,7 +291,7 @@ window.addEventListener("load", function () {
   });
   buttonNot.addEventListener("click", () => {
     containerModal.classList.add("hidden");
-  }); */
+  });
 
   //editar
 
