@@ -84,13 +84,19 @@ main .section .container-inf {
   padding: 20px;
 }
 /* formulario */
-main .section .container-inf .form-create {
+.edit-container{
   width: 100%;
 }
-.form-create .container-inp {
+main .section .container-inf .form-create, 
+.form-edit {
+  width: 100%;
+}
+.form-create .container-inp, 
+.container-inp-edit {
   position: relative;
 }
-.form-create .container-inp #task {
+.form-create .container-inp #task, 
+#task-edit {
   width: 100%;
   border: 3px solid transparent;
   border-radius: 3px;
@@ -152,14 +158,19 @@ body .container-modal {
 }
 
 body .container-modal .modal {
-  height: 100vh;
+  height: 60%;
   width: 50%;
   background-color: var(--primario);
   border: none;
   box-shadow: 0 0 8px var(--cuarto);
   border-radius: 15px;
   position: relative;
+  top: 155px;
+  left: 370px;
   padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 #close-modal {
   position: absolute;
@@ -171,10 +182,20 @@ body .container-modal .modal {
   background-color: transparent;
   border: none;
 }
+#info-delete p{
+  font-size: 20px;
+}
+.btns-delete{
+  display: flex;
+  justify-content: center;
+  gap:15px;
+  padding: 30px;
+}
 /* ocultar vista */
 .hidden {
   display: none;
 }
+
 
 /*Modo Oscuro */
 .dark-mode .titulo {

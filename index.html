@@ -98,7 +98,7 @@
               <span id="selectError" class="error"></span>
             </div>
             
-            <button class="btnFrom" type="submit">Crear</button>
+            <button class="btnFrom btn" type="submit">Crear</button>
             <div class="new-task"></div>
           </form>
           <span id="messageError" class="error"></span>
@@ -113,14 +113,51 @@
         </div>
       </section>
       <!-- aca quiero editar las tareas, aun no esta definido -->
-      <section class="container-modal hidden">
+      <section class="container-modal ">
         <div class="modal">
           <button id="close-modal">&times;</button>
 
           <!-- <div class="edit-container">
             
           </div> -->
+          <div id="info-delete" class="hidden">
+            <p>¿Está seguro de querer eliminar esta tarea?</p>
+            <div class="btns-delete">
+              <button class="btn" id="btn-yes">Si <i class="fa-solid fa-thumbs-up"></i></button>
+              <button class="btn" id="btn-not">No <i class="fa-solid fa-thumbs-down"></i></button>
+            </div>
+          </div>
         </div>
+
+
+        <div class="edit-container">
+            <div class="container-inf-edit">
+              <h2>Crear Nueva Tareas</h2>
+              <form class="form-edit">
+                <div id="inp-edit">
+                  <label for="task-edit">Nueva Tarea</label>
+                  <div class="container-inp-edit">
+                    <input id="task-edit" type="text" name="task-edit" placeholder="Titulo de tarea" />
+                    <i class="fa-regular fa-circle-xmark validation right"></i>
+                  </div>
+                  <span id="taskError-edit" class="error"></span>
+                </div>
+                <div>
+                  <select class="select" id="select-edit">
+                    <option value=""  disabled selected>Seleccione un estado</option>
+                    <option value="Pendiente">Pendiente</option>
+                    <option value="En progreso">En progreso</option>
+                    <option value="Terminado">Terminada</option>
+                  </select>
+                  <span id="selectError-edit" class="error"></span>
+                </div>
+                
+                <button class="btnFrom-edit btn" type="submit">Crear</button>
+              </form>
+              <span id="messageError-edit" class="error"></span>
+            </div>
+            
+          </div>
       </section>
     </main>
     <!-- para el javascript -->

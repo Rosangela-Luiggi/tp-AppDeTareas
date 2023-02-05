@@ -2,29 +2,34 @@ const $ = (elemento) => document.querySelector(elemento);
 
 let tareas = [
   {
+    id: 1,
     titulo: "Estudiar html",
     estado: "Terminado",
   },
   {
+    id: 2,
     titulo: "Estudiar css",
     estado: "En progreso",
   },
   {
+    id: 3,
     titulo: "Estudiar js",
     estado: "Pendiente",
   },
   {
+    id: 4,
     titulo: "Practicar js",
     estado: "En progreso",
   },
 ];
 
-
 window.addEventListener("load", function () {
   /* variables */
   /* Modal */
   const xCloseModal = $("#close-modal");
-  const containerModal = $("#container-modal");
+  const containerModal = $(".container-modal");
+  const infoDeleteModal = $("#info-delete");
+  const infoEditModal = $(".edit-container");
 
   /* vistas */
   const containerTask = $("#task-list");
@@ -71,6 +76,8 @@ window.addEventListener("load", function () {
   // contenedor de tarea existe
   const containerError = $(".new-task");
 
+  //botones de edicion de tareas
+
   /* Funciones */
   // lista de tareas existentes
   const showList = () => {
@@ -82,14 +89,16 @@ window.addEventListener("load", function () {
   showList();
 
   // lista de tareas para editar o eliminar
-  const editList = () => {
-    divEdit.innerHTML = "";
-    tareas.forEach((elem) => {
-      divEdit.innerHTML += `<div><span>Tarea: ${elem.titulo}  Estado: ${elem.estado} </span><button><i class="fa-solid fa-pen"></i> Editar</button><button><i class="fa-solid fa-trash"></i> Eliminar</button></div>
+  const editList = (container, array) => {
+    container.innerHTML = "";
+    array.forEach((elem) => {
+      container.innerHTML += `<div><span>Tarea: ${elem.titulo}  Estado: ${elem.estado} </span>
+      <button class="btn-edit" id=${elem.id}><i class="fa-solid fa-pen" ></i> Editar</button>
+      <button class="btn-delete"  id=${elem.id} ><i class="fa-solid fa-trash" ></i> Eliminar</button></div>
       `;
     });
   };
-  editList();
+  editList(divEdit, tareas);
 
   // funcion filtar
   let mostrarListaTarea = (estado, contenedor) => {
@@ -102,22 +111,29 @@ window.addEventListener("load", function () {
     });
   };
 
-  let agregarVerificacion =(tituloTarea, estadoTarea )=>{
-    for(let tarea of tareas){
-        if(tarea.titulo.toLocaleLowerCase()  === tituloTarea.toLocaleLowerCase() ){
-            let tareaElegida = tarea.titulo.toLocaleLowerCase() ;
-            return ( containerError.innerHTML +=`<p>Tarea: ${tareaElegida }  ya existe`);
-        }else{
-          tareas.push({titulo: tituloTarea, estado: estadoTarea });
-          return showList();
-        }
+  //verifica si la tarea ya existe
+  let agregarVerificacion = (tituloTarea, estadoTarea) => {
+    for (let tarea of tareas) {
+      if (
+        tarea.titulo.toLocaleLowerCase() === tituloTarea.toLocaleLowerCase()
+      ) {
+        let tareaElegida = tarea.titulo.toLocaleLowerCase();
+        return (containerError.innerHTML += `<p>Tarea: ${tareaElegida}  ya existe`);
+      } else {
+        tareas.push({ titulo: tituloTarea, estado: estadoTarea });
+        return showList();
+      }
     }
-    
-    }
+  };
+ //ordena las tareas en la seccion todas
+ let ordenar =()=>{
+  tareas.sort((x, y) => x.titulo.localeCompare(y.titulo));
+   return showList();
+ }
 
   /* eventos */
-  // vistas para el filtrado
 
+  // vistas para el filtrado
   $btnPending.addEventListener("click", () => {
     divListTask.classList.add("hidden");
     divProgress.classList.add("hidden");
@@ -144,12 +160,14 @@ window.addEventListener("load", function () {
     divProgress.classList.add("hidden");
     divFinished.classList.add("hidden");
     divListTask.classList.remove("hidden");
+    ordenar();
   });
 
   //Modal
-  /*  xCloseModal.addEventListener("click", () => {
-    containerModal.classList.remove("hidden");
-  }); */
+  xCloseModal.addEventListener("click", () => {
+    containerModal.classList.add("hidden");
+  });
+
   //Cambiar sección
   $btnTask.addEventListener("click", () => {
     containerCreate.classList.add("hidden");
@@ -167,6 +185,7 @@ window.addEventListener("load", function () {
     containerTask.classList.add("hidden");
     containerCreate.classList.add("hidden");
     containerEdit.classList.remove("hidden");
+   
   });
 
   /* Modo Oscuro */
@@ -236,13 +255,52 @@ window.addEventListener("load", function () {
       }
     }
     if (!errorSend && !validar) {
-      agregarVerificacion($inputTask.value, $selectCreate.value)
-      editList();
+      agregarVerificacion($inputTask.value, $selectCreate.value);
+      editList(divEdit, tareas);
       $selectCreate.value = "";
       $inputTask.value = "";
       $errorstate.innerText = "";
       $errorTask.innerText = "";
-
+      
     }
   });
+
+  //eliminar
+/*   let deleteTask = (id) => {
+    tareas = tareas.filter((tarea) => tarea.id !== Number(id));
+    editList(divEdit, tareas);
+  };
+  $btnDelete = document.querySelectorAll(".btn-delete");
+  $btnDelete.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      containerModal.classList.remove("hidden"); */
+      /*  tareas = tareas.filter((tarea) => tarea.id !== Number(e.target.id));
+      editList(divEdit, tareas); */
+    /* });
+  });
+  const buttonYes = $("#btn-yes");
+  const buttonNot = $("#btn-not");
+
+  buttonYes.addEventListener("click", (e) => {
+    deleteTask(e.target.id);
+    containerModal.classList.add("hidden");
+  });
+  buttonNot.addEventListener("click", () => {
+    containerModal.classList.add("hidden");
+  }); */
+
+  //editar
+
+
+  /* $btnEdit= document.querySelectorAll(".btn-edit")
+  $btnEdit.forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        containerModal.classList.remove("hidden");
+          const tareaAEditar = tareas.find(tarea => tarea.id === Number(e.target.id))
+          $selectCreate.value = tareaAEditar.estado
+          $inputTask.value = tareaAEditar.titulo
+      })
+  })
+
+editList(divEdit, tareas) */
 });
