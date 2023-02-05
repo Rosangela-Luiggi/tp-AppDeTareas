@@ -117,25 +117,12 @@
         <div class="modal">
           <button id="close-modal">&times;</button>
 
-          <!-- <div class="edit-container">
-            
-          </div> -->
-          <div id="info-delete" class="hidden">
-            <p>¿Está seguro de querer eliminar esta tarea?</p>
-            <div class="btns-delete">
-              <button class="btn" id="btn-yes">Si <i class="fa-solid fa-thumbs-up"></i></button>
-              <button class="btn" id="btn-not">No <i class="fa-solid fa-thumbs-down"></i></button>
-            </div>
-          </div>
-        </div>
-
-
-        <div class="edit-container">
+          <div class="edit-container">
             <div class="container-inf-edit">
-              <h2>Crear Nueva Tareas</h2>
+              <h2>Editar Tareas</h2>
               <form class="form-edit">
                 <div id="inp-edit">
-                  <label for="task-edit">Nueva Tarea</label>
+                  <label for="task-edit">Tarea</label>
                   <div class="container-inp-edit">
                     <input id="task-edit" type="text" name="task-edit" placeholder="Titulo de tarea" />
                     <i class="fa-regular fa-circle-xmark validation right"></i>
@@ -156,8 +143,20 @@
               </form>
               <span id="messageError-edit" class="error"></span>
             </div>
-            
           </div>
+
+
+<!-- Modal Confirmación -->
+
+          <div id="info-delete" class="hidden">
+            <p>¿Está seguro de querer eliminar esta tarea?</p>
+            <div class="btns-delete">
+              <button class="btn" id="btn-yes">Si <i class="fa-solid fa-thumbs-up"></i></button>
+              <button class="btn" id="btn-not">No <i class="fa-solid fa-thumbs-down"></i></button>
+            </div>
+          </div>
+        </div>
+          
       </section>
     </main>
     <!-- para el javascript -->
