@@ -11,6 +11,7 @@
   --tercero: #85a2f3f6;
   --cuarto: #3b03ca;
   --quinto: #26b13b;
+  --sexto:  #4a72e0f6;
 }
 body {
   width: 100vw;
@@ -70,6 +71,7 @@ main .section {
   width: 70%;
   height: 70%;
   padding: 20px;
+ text-align: center;
   background-color: var(--primario);
   border: none;
   box-shadow: 0 0 6px var(--cuarto);
@@ -90,6 +92,8 @@ main .section .container-inf {
 main .section .container-inf .form-create, 
 .form-edit {
   width: 100%;
+  height: 100%;
+
 }
 .form-create .container-inp, 
 .container-inp-edit {
@@ -116,8 +120,18 @@ main .section #list,
 .task-pending,
 .task-in-process,
 .task-finished {
+  padding: 30px;
+  font-size: 18px;
+text-align: center;
   height: 100%;
   width: 100%;
+}
+main .section #list .div-list, .div-filt, .div-edit{
+display: flex;
+margin: 20px;
+gap: 15px;
+justify-content: center;
+
 }
 main .section .filter-btn {
   display: flex;
@@ -131,7 +145,7 @@ main .section #inp-create {
   margin-top: 65px;
 }
 .section #inp-create input {
-  width: 90%;
+  width: 100%;
   height: 40px;
   margin-top: 10px;
   border: none;
@@ -141,7 +155,7 @@ main .section #inp-create {
 .select {
   width: 100%;
   height: 35px;
-  margin: 20px;
+  margin: 20px 0;
   border: none;
   outline: none;
   font-size: 15px;
@@ -190,6 +204,15 @@ body .container-modal .modal {
   justify-content: center;
   gap:15px;
   padding: 30px;
+}
+.btn-edit, .btn-delete{
+  padding: 4px;
+  font-size: 10px;
+  background-color: var(--secundario);
+  border: 0.5px solid var(--primario);
+  border-radius: 10px;
+  color: var(--cuarto) ;
+  cursor: pointer;
 }
 /* ocultar vista */
 .hidden {

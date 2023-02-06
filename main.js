@@ -83,21 +83,47 @@ window.addEventListener("load", function () {
   const showList = () => {
     divListTask.innerHTML = "";
     tareas.forEach((elem) => {
-      divListTask.innerHTML += `<p>Tarea: ${elem.titulo}  Estado: ${elem.estado} </p>`;
+      divListTask.innerHTML += `<div class ="div-list"><span>Tarea: ${elem.titulo}</span>
+      <apan>Estado: ${elem.estado} </apan><div>`;
     });
   };
   showList();
+ /*  let deleteTask = (id) => {
+    tareas = tareas.filter((tarea) => tarea.id !== Number(id));
+    editList(divEdit, tareas);
+  }; */
 
   // lista de tareas para editar o eliminar
   const editList = (container, array) => {
     container.innerHTML = "";
     array.forEach((elem) => {
-      container.innerHTML += `<div><span>Tarea: ${elem.titulo}  Estado: ${elem.estado} </span>
+      container.innerHTML += `<div class="div-edit"><span>Tarea: ${elem.titulo}</span>  <span>Estado: ${elem.estado} </span>
       <button class="btn-edit" id=${elem.id}><i class="fa-solid fa-pen" ></i> Editar</button>
       <button class="btn-delete"  id=${elem.id} ><i class="fa-solid fa-trash" ></i> Eliminar</button></div>
       `;
     });
-   
+    $btnDelete = document.querySelectorAll(".btn-delete");
+    $btnDelete.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        containerModal.classList.remove("hidden"); 
+        infoDeleteModal.classList.remove("hidden");
+        tareas = tareas.filter((tarea) => tarea.id !== Number(e.target.id));
+        editList(divEdit, tareas);
+      });
+    });
+
+    
+/*   $btnEdit = document.querySelectorAll(".btn-edit");
+  $btnEdit.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        containerModal.classList.remove("hidden");
+        infoEditModal.classList.remove("hidden");
+        infoDeleteModal.classList.add("hidden");
+          const tareaAEditar = tareas.find(tarea => tarea.id === Number(e.target.id));
+          $selectCreate.value = tareaAEditar.estado;
+          $inputTask.value = tareaAEditar.titulo;
+      });
+  }); */ 
   };
   editList(divEdit, tareas);
 
@@ -107,9 +133,12 @@ window.addEventListener("load", function () {
     tareas.forEach((tarea) => {
       if (tarea.estado === estado) {
         tareas.filter((tarea) => tarea.estado === estado);
-        return (contenedor.innerHTML += `<p>Tarea: ${tarea.titulo}  Estado: ${tarea.estado} </p>`);
+        return (contenedor.innerHTML += `<div class="div-filt"><span>Tarea: ${tarea.titulo}</span>  
+        <span>Estado: ${tarea.estado} </span></div>`);
       }
     });
+    
+
   };
 
   //verifica si la tarea ya existe
@@ -270,23 +299,12 @@ container.innerHTML ="";
   });
 
   //eliminar
-  let deleteTask = (id) => {
-    tareas = tareas.filter((tarea) => tarea.id !== Number(id));
-    editList(divEdit, tareas);
-  };
-  $btnDelete = document.querySelectorAll(".btn-delete");
-  $btnDelete.forEach((btn) => {
-    btn.addEventListener("click", (e) => {
-      containerModal.classList.remove("hidden"); 
-      /* tareas = tareas.filter((tarea) => tarea.id !== Number(e.target.id));
-      editList(divEdit, tareas);  */
-    });
-  });
+  
   const buttonYes = $("#btn-yes");
   const buttonNot = $("#btn-not");
 
   buttonYes.addEventListener("click", (e) => {
-    deleteTask(e.target.id);
+    editList(divEdit, tareas);
     containerModal.classList.add("hidden");
   });
   buttonNot.addEventListener("click", () => {
@@ -296,15 +314,6 @@ container.innerHTML ="";
   //editar
 
 
-  /* $btnEdit= document.querySelectorAll(".btn-edit")
-  $btnEdit.forEach(btn => {
-      btn.addEventListener("click", (e) => {
-        containerModal.classList.remove("hidden");
-          const tareaAEditar = tareas.find(tarea => tarea.id === Number(e.target.id))
-          $selectCreate.value = tareaAEditar.estado
-          $inputTask.value = tareaAEditar.titulo
-      })
-  })
 
-editList(divEdit, tareas) */
+
 });
