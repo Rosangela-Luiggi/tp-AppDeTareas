@@ -22,6 +22,7 @@ let tareas = [
     estado: "En progreso",
   },
 ];
+let idTareaEliminar = 0;
 
 window.addEventListener("load", function () {
   /* variables */
@@ -76,7 +77,9 @@ window.addEventListener("load", function () {
   // contenedor de tarea existe
   const containerError = $(".new-task");
 
-  //botones de edicion de tareas
+  //botones de eliminar de tareas
+  const buttonYes = $("#btn-yes");
+  const buttonNot = $("#btn-not");
 
   /* Funciones */
   // lista de tareas existentes
@@ -88,10 +91,7 @@ window.addEventListener("load", function () {
     });
   };
   showList();
- /*  let deleteTask = (id) => {
-    tareas = tareas.filter((tarea) => tarea.id !== Number(id));
-    editList(divEdit, tareas);
-  }; */
+
 
   // lista de tareas para editar o eliminar
   const editList = (container, array) => {
@@ -105,15 +105,14 @@ window.addEventListener("load", function () {
     $btnDelete = document.querySelectorAll(".btn-delete");
     $btnDelete.forEach((btn) => {
       btn.addEventListener("click", (e) => {
+        idTareaEliminar = e.target.id;
         containerModal.classList.remove("hidden"); 
         infoDeleteModal.classList.remove("hidden");
-        tareas = tareas.filter((tarea) => tarea.id !== Number(e.target.id));
-        editList(divEdit, tareas);
       });
     });
 
-    
-/*   $btnEdit = document.querySelectorAll(".btn-edit");
+   
+ /* $btnEdit = document.querySelectorAll(".btn-edit");
   $btnEdit.forEach((btn) => {
       btn.addEventListener("click", (e) => {
         containerModal.classList.remove("hidden");
@@ -123,7 +122,7 @@ window.addEventListener("load", function () {
           $selectCreate.value = tareaAEditar.estado;
           $inputTask.value = tareaAEditar.titulo;
       });
-  }); */ 
+  });  */
   };
   editList(divEdit, tareas);
 
@@ -155,15 +154,20 @@ window.addEventListener("load", function () {
       }
     }
   };
+
+  //eliminar
+  let deleteTask = (id) => {
+    tareas = tareas.filter((tarea) => tarea.id !== Number(id));
+    editList(divEdit, tareas);
+  }; 
+
  //ordena las tareas en la seccion todas
  let ordenar =()=>{
   tareas.sort((x, y) => x.titulo.localeCompare(y.titulo));
    return showList();
  }
 
-/*  let bleach = (container) =>{
-container.innerHTML ="";
- } */
+
   /* eventos */
 
   // vistas para el filtrado
@@ -299,12 +303,8 @@ container.innerHTML ="";
   });
 
   //eliminar
-  
-  const buttonYes = $("#btn-yes");
-  const buttonNot = $("#btn-not");
-
   buttonYes.addEventListener("click", (e) => {
-    editList(divEdit, tareas);
+    deleteTask(idTareaEliminar);
     containerModal.classList.add("hidden");
   });
   buttonNot.addEventListener("click", () => {
