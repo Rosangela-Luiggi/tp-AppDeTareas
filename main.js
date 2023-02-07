@@ -58,7 +58,7 @@ window.addEventListener("load", function () {
   const divPending = $(".task-pending");
   const divProgress = $(".task-in-process");
   const divFinished = $(".task-finished");
- /*  const copiaDeTareas = [...tareas]; */
+  /*  const copiaDeTareas = [...tareas]; */
 
   //formulario
   const $form = $(".form-create");
@@ -92,7 +92,6 @@ window.addEventListener("load", function () {
   };
   showList();
 
-
   // lista de tareas para editar o eliminar
   const editList = (container, array) => {
     container.innerHTML = "";
@@ -102,17 +101,16 @@ window.addEventListener("load", function () {
       <button class="btn-delete"  id=${elem.id} ><i class="fa-solid fa-trash" ></i> Eliminar</button></div>
       `;
     });
-    $btnDelete = document.querySelectorAll(".btn-delete");
+    let $btnDelete = document.querySelectorAll(".btn-delete");
     $btnDelete.forEach((btn) => {
       btn.addEventListener("click", (e) => {
         idTareaEliminar = e.target.id;
-        containerModal.classList.remove("hidden"); 
+        containerModal.classList.remove("hidden");
         infoDeleteModal.classList.remove("hidden");
       });
     });
 
-   
- /* $btnEdit = document.querySelectorAll(".btn-edit");
+    /* $btnEdit = document.querySelectorAll(".btn-edit");
   $btnEdit.forEach((btn) => {
       btn.addEventListener("click", (e) => {
         containerModal.classList.remove("hidden");
@@ -136,12 +134,11 @@ window.addEventListener("load", function () {
         <span>Estado: ${tarea.estado} </span></div>`);
       }
     });
-    
-
   };
 
   //verifica si la tarea ya existe
   let agregarVerificacion = (tituloTarea, estadoTarea) => {
+
     for (let tarea of tareas) {
       if (
         tarea.titulo.toLocaleLowerCase() === tituloTarea.toLocaleLowerCase()
@@ -150,6 +147,7 @@ window.addEventListener("load", function () {
         return (containerError.innerHTML += `<p>Tarea: ${tareaElegida}  ya existe`);
       } else {
         tareas.push({ titulo: tituloTarea, estado: estadoTarea });
+        containerError.innerHTML ="";
         return showList();
       }
     }
@@ -159,14 +157,13 @@ window.addEventListener("load", function () {
   let deleteTask = (id) => {
     tareas = tareas.filter((tarea) => tarea.id !== Number(id));
     editList(divEdit, tareas);
-  }; 
+  };
 
- //ordena las tareas en la seccion todas
- let ordenar =()=>{
-  tareas.sort((x, y) => x.titulo.localeCompare(y.titulo));
-   return showList();
- }
-
+  //ordena las tareas en la seccion todas
+  let ordenar = () => {
+    tareas.sort((x, y) => x.titulo.localeCompare(y.titulo));
+    return showList();
+  };
 
   /* eventos */
 
@@ -222,7 +219,6 @@ window.addEventListener("load", function () {
     containerTask.classList.add("hidden");
     containerCreate.classList.add("hidden");
     containerEdit.classList.remove("hidden");
-   
   });
 
   /* Modo Oscuro */
@@ -298,7 +294,6 @@ window.addEventListener("load", function () {
       $inputTask.value = "";
       $errorstate.innerText = "";
       $errorTask.innerText = "";
-      
     }
   });
 
@@ -312,8 +307,4 @@ window.addEventListener("load", function () {
   });
 
   //editar
-
-
-
-
 });
